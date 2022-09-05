@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+//@Service
 public class MemberService {
     // private final MemberRepository memberRepository = new MemoryMemberRepository(); // 기존 방식: MemberService가 MemoryMemberRepository를 직접 생성하게 함
     private final MemberRepository memberRepository;
 
-    @Autowired
+    //@Autowired
     public MemberService(MemberRepository memberRepository) {   // MemberService 코드를 DI 가능하게 변경한다.
         this.memberRepository = memberRepository;
     }
