@@ -15,7 +15,11 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'	// java는 DB랑 붙으려면 jdbc 드라이버가 꼭 있어야 함
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	runtimeOnly 'com.h2database:h2'	// DB랑 붙을 때 DB가 제공하는 클라이언트가 필요해서 넣어줌
 }
 
 tasks.named('test') {
