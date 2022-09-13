@@ -11,23 +11,24 @@ import javax.sql.DataSource;
 
 @Configuration
 public class SpringConfig {
-    private EntityManager em;
+
+    private final MemberRepository memberRepository;
 
     @Autowired
-    public SpringConfig(EntityManager em) {
-        this.em = em;
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
     @Bean
     public MemberService memberService() {
-        return new MemberService(memberRepository());
+        return new MemberService(memberRepository);
     }
 
-    @Bean
-    public MemberRepository memberRepository() {    // MemberRepository의 코드 변경 없이 SpringConfig의 수정만으로 Repository의 종류를 바꿀 수 있다!
-        //return new MemoryMemberRepository();
+//    @Bean
+//    public MemberRepository memberRepository() {    // MemberRepository의 코드 변경 없이 SpringConfig의 수정만으로 Repository의 종류를 바꿀 수 있다!
+//        //return new MemoryMemberRepository();
         //return new JdbcMemberRepository(dataSource);
         //return new JdbcTemplateMemberRepository(dataSource);
-        return new JpaMemberRepository(em);
-    }
+        //return new JpaMemberRepository(em);
+    // }
 }
